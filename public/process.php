@@ -27,8 +27,7 @@ if ($conn->connect_error) {
 }
 
 // Pastikan input berupa integer
-$cpu_id = (int)$cpu_id;
-$gpu_id = (int)$gpu_id;
+
 $resolution_id = (int)$resolution_id;
 $purpose_id = (int)$purpose_id;
 
@@ -46,7 +45,7 @@ if (!$stmt) {
     exit;
 }
 
-$stmt->bind_param("iiii", $cpu_id, $gpu_id, $resolution_id, $purpose_id);
+$stmt->bind_param("ssii", $cpu_id, $gpu_id, $resolution_id, $purpose_id);
 $stmt->execute();
 $result = $stmt->get_result();
 
